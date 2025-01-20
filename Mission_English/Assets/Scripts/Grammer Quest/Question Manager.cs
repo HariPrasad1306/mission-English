@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class QuestionManager : MonoBehaviour
 {
@@ -15,7 +16,19 @@ public class QuestionManager : MonoBehaviour
     [Header("Question Data")]
     public QuestionData questionData; // ScriptableObject reference.
 
+    [Header("Drop Zones")]
+    public DropZone[] dropZones; // Array for the 4 drop zones.
+
+    [Header("Next Button")]
+    public GameObject nextButton; // Reference to the next button.
+
+    [Header("Game Over Panel")]
+    public GameObject gameOverPanel; // Reference to the Game Over panel.
+    public TextMeshProUGUI gameOverText; // Reference to the Game Over text.
+
     private int currentSetIndex = 0; // Tracks which set of 4 questions is active.
+
+    public int CurrentQuestionIndex => currentSetIndex; // Expose the current question set index as a read-only property
 
     void Start()
     {
@@ -43,17 +56,73 @@ public class QuestionManager : MonoBehaviour
                 GameObject answerObj = Instantiate(answerPrefab, answerParent);
                 answerObj.GetComponentInChildren<TextMeshProUGUI>().text = answer;
             }
+
+            // Reset drop zones
+            foreach (DropZone dropZone in dropZones)
+            {
+                dropZone.ResetDropZone();
+            }
+
+            // Disable the next button initially
+            nextButton.SetActive(false);
         }
         else
         {
-            Debug.Log("All questions completed!");
-            // Handle end-of-game logic here (e.g., show summary).
+            GameOver(); // Trigger the Game Over when all questions are answered
         }
+    }
+
+    public void CheckAllDropZonesFilled()
+    {
+        // Check if all drop zones are filled
+        bool allFilled = true;
+        foreach (DropZone dropZone in dropZones)
+        {
+            if (!dropZone.IsFilled())
+            {
+                allFilled = false;
+                break;
+            }
+        }
+
+        // Enable next button if all drop zones are filled
+        nextButton.SetActive(allFilled);
     }
 
     public void NextSet()
     {
         currentSetIndex++;
         LoadQuestions();
+    }
+
+    public void GameOver()
+    {
+        // Disable the question UI and next button
+        foreach (TextMeshProUGUI questionText in questionTexts)
+        {
+            questionText.gameObject.SetActive(false);
+        }
+
+        foreach (Transform child in answerParent)
+        {
+            child.gameObject.SetActive(false);
+        }
+
+        // Show the Game Over panel
+        gameOverPanel.SetActive(true);
+        gameOverText.text = "Congratulations!! \n You've completed all the questions!";
+    }
+
+    // Optionally, you can have a restart function
+    public void RestartGame()
+    {
+        currentSetIndex = 0;
+        gameOverPanel.SetActive(false);
+        LoadQuestions();
+    }
+
+    public void LoadScreen(int sceneNum)
+    {
+        SceneManager.LoadScene(sceneNum);
     }
 }

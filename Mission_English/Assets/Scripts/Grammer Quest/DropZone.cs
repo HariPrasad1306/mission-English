@@ -5,12 +5,17 @@ using TMPro;
 public class DropZone : MonoBehaviour, IDropHandler
 {
     [Header("Question Data")]
-    public QuestionData questionData;
-    public int questionIndex;
-    public int subQuestionIndex;
+    public QuestionData questionData; // Reference to the QuestionData.
+    public int dropZoneIndex; // Index to identify which drop zone this is in the current question set.
+    public QuestionManager questionManager; // Reference to the QuestionManager.
 
     [Header("Feedback Settings")]
-    public TextMeshProUGUI feedbackText;
+    public TextMeshProUGUI feedbackText; // For showing feedback (correct/incorrect).
+
+    private bool isFilled = false; // To check if the drop zone is filled.
+
+    // Method to get the drop zone state
+    public bool IsFilled() => isFilled;
 
     public void OnDrop(PointerEventData eventData)
     {
@@ -26,38 +31,38 @@ public class DropZone : MonoBehaviour, IDropHandler
                 {
                     string answer = draggedText.text;
 
-                    if (questionIndex >= 0 && questionIndex < questionData.questions.Count)
+                    // Check for correct answer based on the dropZoneIndex
+                    if (dropZoneIndex >= 0 && dropZoneIndex < questionData.questions[questionManager.CurrentQuestionIndex].correctAnswers.Length)
                     {
-                        if (subQuestionIndex >= 0 && subQuestionIndex < questionData.questions[questionIndex].correctAnswers.Length)
+                        string correctAnswer = questionData.questions[questionManager.CurrentQuestionIndex].correctAnswers[dropZoneIndex];
+
+                        if (answer == correctAnswer)
                         {
-                            string correctAnswer = questionData.questions[questionIndex].correctAnswers[subQuestionIndex];
+                            feedbackText.text = "Correct!";
+                            feedbackText.color = Color.green;
 
-                            if (answer == correctAnswer)
-                            {
-                                feedbackText.text = "Correct!";
-                                feedbackText.color = Color.green;
+                            draggedItem.transform.SetParent(this.transform); // Lock the answer to the drop zone
+                            draggedItem.LockItem(); // Lock the item so it can't be moved.
+                            draggedItem.rectTransform.localPosition = Vector3.zero; // Center the item.
 
-                                draggedItem.transform.SetParent(this.transform); // Lock the answer to the drop zone
-                                draggedItem.LockItem(); // Lock the item so it can't be moved.
-                                draggedItem.rectTransform.localPosition = Vector3.zero; // Center the item.
-                            }
-                            else
-                            {
-                                feedbackText.text = "Incorrect!";
-                                feedbackText.color = Color.red;
+                            isFilled = true; // Mark the drop zone as filled
 
-                                // Reset the item position and put it back in the original layout group
-                                draggedItem.ResetItem();
-                            }
+                            // Notify the QuestionManager that this drop zone has been filled
+                            questionManager.CheckAllDropZonesFilled();
                         }
                         else
                         {
-                            feedbackText.text = "Sub-question index out of range!";
+                            feedbackText.text = "Incorrect!";
+                            feedbackText.color = Color.red;
+
+                            // Reset the item position and put it back in the original layout group
+                            draggedItem.ResetItem();
+                            isFilled = false; // Reset the drop zone to not filled
                         }
                     }
                     else
                     {
-                        feedbackText.text = "Question index out of range!";
+                        feedbackText.text = "Index out of range!";
                     }
                 }
                 else
@@ -66,5 +71,16 @@ public class DropZone : MonoBehaviour, IDropHandler
                 }
             }
         }
+    }
+
+    // Reset the drop zone when transitioning to the next question
+    public void ResetDropZone()
+    {
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject); // Remove the dropped item
+        }
+
+        isFilled = false; // Reset the filled state
     }
 }

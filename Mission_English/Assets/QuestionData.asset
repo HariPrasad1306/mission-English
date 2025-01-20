@@ -33,3 +33,133 @@ MonoBehaviour:
     - Spoke
     - Meet
     - Wore
+  - subQuestions:
+    - Go
+    - Take
+    - Be
+    - ' Have'
+    correctAnswers:
+    - Went
+    - Took
+    - Was
+    - Had
+  - subQuestions:
+    - Arise
+    - Choose
+    - Strive
+    - Seek
+    correctAnswers:
+    - Arose
+    - Chose
+    - Strove
+    - Sought
+  - subQuestions:
+    - Shine
+    - Grow
+    - Show
+    - Find
+    correctAnswers:
+    - Shone
+    - Grew
+    - Showed
+    - Found
+  - subQuestions:
+    - Eat
+    - Drink
+    - Ride
+    - Write
+    correctAnswers:
+    - Ate
+    - Drank
+    - Rode
+    - Wrote
+  - subQuestions:
+    - 'Bring '
+    - Buy
+    - Catch
+    - Think
+    correctAnswers:
+    - Brought
+    - Bought
+    - Caught
+    - Thought
+  - subQuestions:
+    - Begin
+    - Sing
+    - Swim
+    - Give
+    correctAnswers:
+    - Began
+    - Sang
+    - Swam
+    - Gave
+  - subQuestions:
+    - Freeze
+    - Speak
+    - Steal
+    - Weep
+    correctAnswers:
+    - Froze
+    - Spoke
+    - Stole
+    - Wept
+  - subQuestions:
+    - Bind
+    - Bite
+    - Blow
+    - Break
+    correctAnswers:
+    - Bound
+    - Bit
+    - Blew
+    - Broke
+  - subQuestions:
+    - Choose
+    - Climb
+    - Come
+    - Cost
+    correctAnswers:
+    - Chose
+    - Climbed
+    - Came
+    - Cost
+  - subQuestions:
+    - Creep
+    - Deal
+    - Dig
+    - Do
+    correctAnswers:
+    - Crept
+    - Dealt
+    - Dug
+    - Did
+  - subQuestions:
+    - Fly
+    - Forgive
+    - Forget
+    - Forgo
+    correctAnswers:
+    - Flew
+    - Forgave
+    - Forgot
+    - Forwent
+  - subQuestions:
+    - Give
+    - Go
+    - Grow
+    - Hang
+    correctAnswers:
+    - Gave
+    - Went
+    - Grew
+    - 'Hung '
+  - subQuestions:
+    - Feed
+    - Feel
+    - Fight
+    - Find
+    correctAnswers:
+    - Fed
+    - Felt
+    - Fought
+    - Found

@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acc1b11c8af4e6647a15ee0ca34ff121, type: 3}
+  m_Name: New Syllogism Question
+  m_EditorClassIdentifier: 
+  questions:
+  - premise1: "All astronauts travel to space.\r"
+    premise2: The narrator's son is an astronaut.
+    conclusion: The narrator's son travels to space.
+    isConclusionValid: 1
+    hint: Valid
+    difficulty: 0
+  - premise1: "All mothers love their children.\r"
+    premise2: The narrator is a mother.
+    conclusion: The narrator hates her child.
+    isConclusionValid: 0
+    hint: Invalid
+    difficulty: 0
+  - premise1: All spaceships travel to other planets.
+    premise2: "The two large spaceships are destined for a neighboring planet\r "
+    conclusion: The two large spaceships are spaceships.
+    isConclusionValid: 1
+    hint: Valid
+    difficulty: 0
+  - premise1: "\rAll people who live on the moon reside in Selenopolis."
+    premise2: ' The narrator''s son lives on the moon.'
+    conclusion: The narrator's son resides in Selenopolis.
+    isConclusionValid: 1
+    hint: Valid
+    difficulty: 0
+  - premise1: All taped clips are recordings of past conversations
+    premise2: ' The conversation between the narrator and her son is a taped clip. '
+    conclusion: ' The conversation between the narrator and her son is a live conversation.'
+    isConclusionValid: 0
+    hint: Invalid
+    difficulty: 0
+  - premise1: 'All people who prioritize family over ambition do not travel to other
+      planets. '
+    premise2: The narrator's son travels to other planets.
+    conclusion: 'The narrator''s son does not prioritize family over ambition. '
+    isConclusionValid: 1
+    hint: Valid
+    difficulty: 1
+  - premise1: All mothers who are concerned about their children's safety prefer
+      them to stay on Earth.
+    premise2: The narrator is concerned about her son's safety.
+    conclusion: The narrator prefers her son to stay on Earth.
+    isConclusionValid: 0
+    hint: invalid
+    difficulty: 1
+  - premise1: All astronauts who are homesick for their families are reminded of
+      their loved ones by taped clips.
+    premise2: The narrator's son is homesick for his family.
+    conclusion: The narrator's son is not reminded of his loved ones by taped clips.
+    isConclusionValid: 0
+    hint: inValid
+    difficulty: 1
+  - premise1: All people who do not appreciate the beauty of Earth are focused on
+      exploring other planets.
+    premise2: The narrator's son does not appreciate the beauty of Earth.
+    conclusion: The narrator's son is not focused on exploring other planets.
+    isConclusionValid: 0
+    hint: inValid
+    difficulty: 1
+  - premise1: "All astronauts who listen to taped clips of their loved ones are homesick.\r"
+    premise2: The narrator's son listens to a taped clip of his mother.
+    conclusion: "The narrator's son is homesick.\r"
+    isConclusionValid: 1
+    hint: Valid
+    difficulty: 1
+  - premise1: "All people who prioritize ambition over family are willing to make
+      sacrices for their goals. \r"
+    premise2: The narrator's son prioritizes ambition over family.
+    conclusion: "The narrator's son is willing to make sacrices for his goals.\r"
+    isConclusionValid: 1
+    hint: Valid
+    difficulty: 2
+  - premise1: "All mothers who try to persuade their children to prioritize family
+      over ambition are motivated by love.\r"
+    premise2: The narrator tries to persuade her son to prioritize family over ambition.
+    conclusion: "The narrator is motivated by love\r"
+    isConclusionValid: 1
+    hint: Valid
+    difficulty: 2
+  - premise1: "All astronauts who are homesick for their families are reminded of
+      their loved ones by taped clips.\r"
+    premise2: 'The narrator''s son is homesick for his family. '
+    conclusion: "The narrator's son is not reminded of his loved ones by taped clips.
+      \r"
+    isConclusionValid: 0
+    hint: 'Invalid '
+    difficulty: 2
+  - premise1: "All people who do not appreciate the beauty of Earth are focused on
+      exploring other planets\r"
+    premise2: 'The narrator''s son does not appreciate the beauty of Earth. '
+    conclusion: "The narrator's son is not focused on exploring other planets. \r"
+    isConclusionValid: 0
+    hint: 'Invalid '
+    difficulty: 2
+  - premise1: "All ambitious projects that involve spaceships traveling to neighboring
+      planets require sacrices from the astronauts involved.\r"
+    premise2: The narrator's son is part of an ambitious project.
+    conclusion: "The narrator's son has to make sacrices for the project.\r"
+    isConclusionValid: 1
+    hint: Valid
+    difficulty: 2
