@@ -1,0 +1,148 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 924b125684c26dc43b41115489dcf05d, type: 3}
+  m_Name: Puzzle1
+  m_EditorClassIdentifier: 
+  timeInSeconds: 0
+  Colums: 10
+  Rows: 10
+  Board:
+  - Size: 10
+    Row:
+    - S
+    - J
+    - H
+    - K
+    - C
+    - U
+    - M
+    - H
+    - S
+    - V
+  - Size: 10
+    Row:
+    - P
+    - R
+    - E
+    - N
+    - D
+    - A
+    - H
+    - T
+    - V
+    - K
+  - Size: 10
+    Row:
+    - L
+    - I
+    - T
+    - C
+    - I
+    - C
+    - U
+    - E
+    - J
+    - H
+  - Size: 10
+    Row:
+    - A
+    - F
+    - V
+    - M
+    - U
+    - M
+    - T
+    - D
+    - H
+    - E
+  - Size: 10
+    Row:
+    - T
+    - U
+    - D
+    - R
+    - B
+    - E
+    - C
+    - U
+    - R
+    - T
+  - Size: 10
+    Row:
+    - T
+    - J
+    - M
+    - L
+    - S
+    - I
+    - O
+    - G
+    - N
+    - F
+  - Size: 10
+    Row:
+    - E
+    - K
+    - E
+    - L
+    - L
+    - V
+    - C
+    - O
+    - H
+    - V
+  - Size: 10
+    Row:
+    - R
+    - M
+    - R
+    - C
+    - O
+    - A
+    - R
+    - U
+    - D
+    - A
+  - Size: 10
+    Row:
+    - C
+    - A
+    - E
+    - S
+    - G
+    - W
+    - J
+    - T
+    - E
+    - A
+  - Size: 10
+    Row:
+    - C
+    - F
+    - S
+    - E
+    - H
+    - C
+    - N
+    - E
+    - R
+    - T
+  SearchWords:
+  - word: TRUCE
+  - word: DUGOUT
+  - word: CARLS
+  - word: TRENCHES
+  - word: MAIM
+  - word: SPLATTER
+  - word: SLOG
+  - word: MUCK
+  - word: STUMBLE

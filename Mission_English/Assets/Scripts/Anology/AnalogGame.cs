@@ -1,17 +1,26 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class AnalogGame : MonoBehaviour
 {
-    public Text questionText;
-    public Button[] optionButtons;
-    public Text feedbackText;
-    public Text scoreText;
+    public TMP_Text questionText;
+    public Button[] optionButtons; // Buttons with TextMeshPro child texts
+    public TMP_Text feedbackText;
+    public TMP_Text scoreText;
+    public AnalogyQuestionData analogyQuestionData; // Reference to your ScriptableObject
+    public GameObject endGamePanel; // Reference to the End Game UI Panel
+    public Button retryButton; // Retry button
+    public Button exitButton; // Exit button to go to home page
 
-    private List <Question> questions = new List<Question> ();
+    [Header("Button Colors")]
+    public Color correctAnswerColor = Color.green;
+    public Color incorrectAnswerColor = Color.red;
+    public Color defaultButtonColor = Color.white;
+
+    private List<AnalogyQuestionData.Question3> questions = new List<AnalogyQuestionData.Question3>();
     private int currentQuestionIndex = 0;
     private int score = 0;
 
@@ -19,63 +28,89 @@ public class AnalogGame : MonoBehaviour
     {
         feedbackText.text = "";
         score = 0;
+
         LoadQuestions();
         DisplayQuestions();
+        endGamePanel.SetActive(false); // Hide the end game panel initially
+
+        // Add listeners to the buttons
+        retryButton.onClick.AddListener(RetryGame);
+        exitButton.onClick.AddListener(GoToHomePage); // Go to home page instead of exiting
     }
 
     private void LoadQuestions()
     {
-        questions.Add(new Question
-        {
-            question = "Ramanujan : Mathematician :: Einstein : ?",
-            options = new string[] { "Physicist", "Biologist", "Chemist", "Geologist" },
-            correctAnswerIndex = 0
-
-        });
-
-        questions.Add(new Question
-        {
-            question = "Cambridge : University :: Trinity : ?",
-            options = new string[] { "College", "School", "Institute", "Academy" },
-            correctAnswerIndex = 0
-        });
+        // Load questions from the ScriptableObject
+        questions = new List<AnalogyQuestionData.Question3>(analogyQuestionData.questions);
     }
 
     private void DisplayQuestions()
     {
-       if (currentQuestionIndex < questions.Count)
+        if (currentQuestionIndex < questions.Count)
         {
-            Question curent = questions[currentQuestionIndex];
-            questionText.text = curent.question;
+            var current = questions[currentQuestionIndex];
+            questionText.text = current.question;
 
-            for (int i = 0; i < curent.options.Length; i++) 
+            for (int i = 0; i < optionButtons.Length; i++)
             {
-                optionButtons[i].GetComponentInChildren<Text>().text = curent.options[i];
-                int index = i;
-                optionButtons[i].onClick.RemoveAllListeners();
-                optionButtons[i].onClick.AddListener(() => CheckAnswer(index));
+                if (i < current.options.Length)
+                {
+                    optionButtons[i].gameObject.SetActive(true); // Show all buttons
+                    TMP_Text buttonText = optionButtons[i].GetComponentInChildren<TMP_Text>();
+                    buttonText.text = current.options[i];
+                    optionButtons[i].image.color = defaultButtonColor; // Reset button color
 
+                    int index = i; // Capture index for the lambda
+                    optionButtons[i].onClick.RemoveAllListeners();
+                    optionButtons[i].onClick.AddListener(() => CheckAnswer(index));
+                }
+                else
+                {
+                    optionButtons[i].gameObject.SetActive(false); // Hide extra buttons
+                }
+            }
+        }
+        else
+        {
+            EndGame(); // Call EndGame when all questions are answered
         }
     }
-}
 
     private void CheckAnswer(int selected)
     {
-        if (selected == questions[currentQuestionIndex].correctAnswerIndex)
-        {
-            feedbackText.text = "Correct";
-            score += 10;
+        var current = questions[currentQuestionIndex];
 
-        }
-        else 
+        // Highlight the correct and incorrect buttons
+        for (int i = 0; i < optionButtons.Length; i++)
         {
-            feedbackText.text = "Try Again";   
+            if (i == current.correctAnswerIndex)
+            {
+                optionButtons[i].image.color = correctAnswerColor; // Use correct answer color
+            }
+            else if (i == selected)
+            {
+                optionButtons[i].image.color = incorrectAnswerColor; // Use incorrect answer color
+            }
+            else
+            {
+                optionButtons[i].gameObject.SetActive(false); // Hide other buttons
+            }
+        }
+
+        // Update feedback and score
+        if (selected == current.correctAnswerIndex)
+        {
+            feedbackText.text = "Correct!!";
+            score += 10;
+        }
+        else
+        {
+            feedbackText.text = "Wrong!";
         }
 
         UpdateScore();
-        Invoke("NextQuestion", 1.5f);
+        Invoke(nameof(NextQuestion), 2f); // Delay before moving to the next question
     }
-
 
     private void NextQuestion()
     {
@@ -83,17 +118,48 @@ public class AnalogGame : MonoBehaviour
         currentQuestionIndex++;
         DisplayQuestions();
     }
+
     private void UpdateScore()
     {
-        scoreText.text =$"Score : {score}";
+        scoreText.text = $"Score: {score}";
     }
-   private void EndGame()
+
+    private void EndGame()
     {
         questionText.text = "Congratulations! You've completed the game.";
         foreach (Button button in optionButtons)
         {
             button.gameObject.SetActive(false);
         }
+
+        // Show the End Game UI Panel
+        endGamePanel.SetActive(true);
+
+        // Update the end game panel with the score
+        TMP_Text endGameText = endGamePanel.GetComponentInChildren<TMP_Text>();
+        endGameText.text = $"Game Over!\nYour Score: {score}";
+
+        // Hide the retry and exit buttons initially
+        retryButton.gameObject.SetActive(true);
+        exitButton.gameObject.SetActive(true);
+    }
+
+    // Method to restart the game
+    private void RetryGame()
+    {
+        // Reset variables and reload the current scene
+        currentQuestionIndex = 0;
+        score = 0;
+        feedbackText.text = "";
+        UpdateScore();
+        endGamePanel.SetActive(false); // Hide the end game panel
+        DisplayQuestions();
+    }
+
+    // Method to go back to the Home Page (Main Menu)
+    private void GoToHomePage()
+    {
+        // Load the home page scene (assuming it's named "HomePage")
+        SceneManager.LoadScene("HomePage");
     }
 }
-

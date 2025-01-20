@@ -1,0 +1,157 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5a3363bdab228946a9aed6d1832a5e7, type: 3}
+  m_Name: AnalogyQuestionData
+  m_EditorClassIdentifier: 
+  questions:
+  - question: 'Ramanujan : Mathematician :: Einstein : ?'
+    options:
+    - ' Physicist'
+    - ' Biologist'
+    - Chemist
+    - Geologist
+    correctAnswerIndex: 0
+  - question: 'Cambridge : University :: Trinity : ?'
+    options:
+    - College
+    - School
+    - Institute
+    - Academy
+    correctAnswerIndex: 0
+  - question: 'Numbers : Ramanujan :: Words : ?'
+    options:
+    - Poet
+    - Mathematician
+    - Scientist
+    - Author
+    correctAnswerIndex: 0
+  - question: 'Royal Society : Fellowship :: Nobel Committee : ?'
+    options:
+    - Award
+    - Prize
+    - Grant
+    - Scholarship
+    correctAnswerIndex: 1
+  - question: 'India : Ramanujan :: Germany : ? '
+    options:
+    - Einstein
+    - Gauss
+    - Hilbert
+    - Kant
+    correctAnswerIndex: 0
+  - question: '.Ramanujan : Intuition :: Euclid : ?'
+    options:
+    - ' Logic'
+    - Reasoning
+    - Proof
+    - Deduction
+    correctAnswerIndex: 2
+  - question: 'Mathematics : Ramanujan :: Physics : ?'
+    options:
+    - Newton
+    - Einstein
+    - Galileo
+    - Hawking
+    correctAnswerIndex: 1
+  - question: 'Hardy-Ramanujan-Littlewood : Number Theory :: Watson-Crick : ? '
+    options:
+    - Genetics
+    - Biology
+    - Chemistry
+    - Physics
+    correctAnswerIndex: 0
+  - question: 'Ramanujan''s Notebooks : Mathematics :: Da Vinci''s Notebooks : ?'
+    options:
+    - Art
+    - Science
+    - Engineering
+    - Architecture
+    correctAnswerIndex: 1
+  - question: 'Cambridge University : Ramanujan :: Oxford University : ?'
+    options:
+    - Hardy
+    - Littlewood
+    - Russell
+    - Hawking
+    correctAnswerIndex: 0
+  - question: 'Ramanujan''s illness : Tuberculosis ::Hawking''s illness : ?'
+    options:
+    - ALS
+    - Cancer
+    - Parkinson's
+    - Alzheimer's
+    correctAnswerIndex: 0
+  - question: 'Ramanujan''s work : Innity :: Einstein''s work : ?'
+    options:
+    - Relativity
+    - Gravity
+    - Space
+    - Time
+    correctAnswerIndex: 0
+  - question: 'Trinity College : Ramanujan :: Harvard University : ?'
+    options:
+    - Einstein
+    - Hawking
+    - Gates
+    - Zuckerberg
+    correctAnswerIndex: 2
+  - question: 'Royal Society Fellowship : Ramanujan :: Pulitzer Prize : ?'
+    options:
+    - Journalist
+    - Author
+    - Scientist
+    - Mathematician
+    correctAnswerIndex: 1
+  - question: 'Ramanujan''s legacy : Mathematics :: Shakespeare''s legacy : ?'
+    options:
+    - Literature
+    - Theater
+    - Poetry
+    - Drama
+    correctAnswerIndex: 0
+  - question: 'Ramanujan''s approach : Mathematics :: Picasso''s approach : ?'
+    options:
+    - Art
+    - Science
+    - Music
+    - Literature
+    correctAnswerIndex: 0
+  - question: 'Hardy-Ramanujan-Littlewood circle method : Number Theory :: Turing
+      Machine : ?'
+    options:
+    - Computer Science
+    - Mathematics
+    - Logic
+    - Philosophy
+    correctAnswerIndex: 0
+  - question: 'Ramanujan''s cultural background : Mathematics :: Faulkner''s cultural
+      background : ?'
+    options:
+    - ' Literature'
+    - History
+    - Sociology
+    - Anthropology
+    correctAnswerIndex: 0
+  - question: 'Ramanujan''s collaboration : Hardy :: Watson''s collaboration : ?'
+    options:
+    - Crick
+    - Franklin
+    - Wilkins
+    - Pauling
+    correctAnswerIndex: 0
+  - question: 'Ramanujan''s impact : Indian mathematics :: Gauss''s impact : ?'
+    options:
+    - German mathematics
+    - European mathematics
+    - World mathematics
+    - Number theory
+    correctAnswerIndex: 0
