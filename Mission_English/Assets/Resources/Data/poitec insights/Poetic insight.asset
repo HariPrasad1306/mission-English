@@ -1,0 +1,170 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5a3363bdab228946a9aed6d1832a5e7, type: 3}
+  m_Name: Poetic insight
+  m_EditorClassIdentifier: 
+  questions:
+  - question: 'What poetic device is used in the line "A glowing ember in the  midnight
+      sky"? '
+    options:
+    - 'Metaphor '
+    - Simile
+    - Personification
+    - 'Imagery '
+    correctAnswerIndex: 3
+  - question: ' Which poetic device compares the comet''s tail to a "golden  ribbon"? '
+    options:
+    - 'Metaphor '
+    - Simile
+    - Personification
+    - Hyperbole
+    correctAnswerIndex: 1
+  - question: 'What poetic device is used to give the comet human-like qualities
+      in  the line "It streaks across the heavens"? '
+    options:
+    - Personification
+    - Metaphor
+    - 'Simile '
+    - 'Imagery '
+    correctAnswerIndex: 0
+  - question: Which poetic device emphasizes the comet's magical quality in the 
+      line "A moment's magic spell"?
+    options:
+    - Hyperbole
+    - Metaphor
+    - 'Simile '
+    - Personification
+    correctAnswerIndex: 1
+  - question: 'What poetic device creates a musical quality in the line "Streaming 
+      silver streak"? '
+    options:
+    - Alliteration
+    - Assonance
+    - 'Consonance '
+    - Onomatopoeia
+    correctAnswerIndex: 0
+  - question: Which poetic device is used to compare the comet to a "glowing  ember"?
+    options:
+    - Metaphor
+    - Simile
+    - Personification
+    - Imagery
+    correctAnswerIndex: 0
+  - question: What poetic device creates a sense of flow and continuity in the lines 
+      "A glowing ember in the midnight sky / Its tail a streaming banner,  golden
+      bright"?
+    options:
+    - Enjambment
+    - 'Caesura '
+    - Anaphora
+    - Epistrophe
+    correctAnswerIndex: 0
+  - question: Which poetic device emphasizes the comet's beauty and wonder?
+    options:
+    - Imagery
+    - Metaphor
+    - Simile
+    - Hyperbole
+    correctAnswerIndex: 0
+  - question: What poetic device is used to create a sense of awe and magic in the 
+      line "A fleeting wonder, a moment's magic spell"?
+    options:
+    - Imagery
+    - Metaphor
+    - Simile
+    - Personification
+    correctAnswerIndex: 0
+  - question: Which poetic device compares the comet's tail to a "streaming  banner"?
+    options:
+    - 'Hyperbole '
+    - Metaphor
+    - Simile
+    - Personification
+    correctAnswerIndex: 1
+  - question: What poetic device is used in the line "The stick-together families 
+      are happier by far"?
+    options:
+    - 'Hyperbole '
+    - Metaphor
+    - Simile
+    - Alliteration
+    correctAnswerIndex: 1
+  - question: Which poetic device compares the stick-together families to a  "team"?
+    options:
+    - 'Personification '
+    - Metaphor
+    - Simile
+    - Alliteration
+    correctAnswerIndex: 1
+  - question: What poetic device is used to give the families human-like  qualities
+      in the line "They stand together, come what may"?
+    options:
+    - 'Personification '
+    - Metaphor
+    - Simile
+    - Imagery
+    correctAnswerIndex: 0
+  - question: Which poetic device emphasizes the importance of family unity in  the
+      line "The family tie is sacred, don't you see"?
+    options:
+    - 'Personification '
+    - Metaphor
+    - Simile
+    - 'Hyperbole '
+    correctAnswerIndex: 3
+  - question: ' What poetic device creates a musical quality in the line  "Stick-together
+      families are the backbone of the land"? '
+    options:
+    - Alliteration
+    - Assonance
+    - Consonance
+    - Onomatopoeia
+    correctAnswerIndex: 0
+  - question: Which poetic device is used to compare the family tie to a  "sacred"
+      bond?
+    options:
+    - Metaphor
+    - Simile
+    - Personification
+    - Imagery
+    correctAnswerIndex: 0
+  - question: 'What poetic device creates a sense of rhythm and flow in the  poem? '
+    options:
+    - Enjambment
+    - Caesura
+    - Anaphora
+    - End Rhyme
+    correctAnswerIndex: 3
+  - question: Which poetic device emphasizes the idea that families should  work
+      together in the line "They work together, laugh and play"?
+    options:
+    - Imagery
+    - Metaphor
+    - Simile
+    - Personification
+    correctAnswerIndex: 0
+  - question: What poetic device is used to give the reader a sense of the  importance
+      of family unity in the line "For when they stick together,  they are strong"?
+    options:
+    - Hyperbole
+    - Metaphor
+    - Simile
+    - Personification
+    correctAnswerIndex: 0
+  - question: Which poetic device compares the stick-together families to a  "team
+      that wins"?
+    options:
+    - 'Simile '
+    - Metaphor
+    - Alliteration
+    - Personification
+    correctAnswerIndex: 1
