@@ -22,7 +22,7 @@ public class SearchingWordsList : MonoBehaviour
 
         if (_wordsNumber < _colums)
             _rows = 1;
-        else 
+        else
             CalculationCoulmsAndRowsNumber();
 
         CreateWordObjects();
@@ -36,7 +36,7 @@ public class SearchingWordsList : MonoBehaviour
             _colums++;
             _rows = _wordsNumber / _colums;
         } while (_rows >= maxRows);
-       
+
         if (_colums > maxColums)
         {
             _colums = maxColums;
@@ -46,9 +46,9 @@ public class SearchingWordsList : MonoBehaviour
 
     private bool TryIncreaseColumNumber()
     {
-            _colums++;
-            _rows = _wordsNumber / _colums;
-        
+        _colums++;
+        _rows = _wordsNumber / _colums;
+
 
         if (_colums > maxColums)
         {
@@ -63,16 +63,16 @@ public class SearchingWordsList : MonoBehaviour
         return true;
     }
 
-    private  void CreateWordObjects()
+    private void CreateWordObjects()
     {
         var squareScale = GetSquareScale(new Vector3(1f, 1f, 0.1f));
 
-        for(var index = 0; index < _wordsNumber; index++)
+        for (var index = 0; index < _wordsNumber; index++)
         {
             _words.Add(Instantiate(SearchingWordPrefab) as GameObject);
             _words[index].transform.SetParent(this.transform);
             _words[index].GetComponent<RectTransform>().localScale = squareScale;
-            _words[index].GetComponent<RectTransform>().localPosition =new Vector3(0f, 0f, 0f);
+            _words[index].GetComponent<RectTransform>().localPosition = new Vector3(0f, 0f, 0f);
             _words[index].GetComponent<SearchingWord>().SetWord(currentGameData.selectedBoardData.SearchWords[index].word);
         }
     }
@@ -107,7 +107,7 @@ public class SearchingWordsList : MonoBehaviour
         squareSize.x = squareRect.rect.width * targetScale.x + offset;
         squareSize.y = squareRect.rect.height * targetScale.y + offset;
 
-        var totalSquareHeight = squareSize.y *_rows;
+        var totalSquareHeight = squareSize.y * _rows;
 
         //Make sure all of the square fit in the parent rectangle area
 
@@ -121,11 +121,11 @@ public class SearchingWordsList : MonoBehaviour
                     return true;
             }
         }
-        var totalSquareWidth = squareSize.x *_colums;
+        var totalSquareWidth = squareSize.x * _colums;
 
         if (totalSquareWidth > parentRect.rect.width)
             return true;
-        
+
         return false;
     }
 
@@ -152,7 +152,7 @@ public class SearchingWordsList : MonoBehaviour
 
             var positionX = startPosition.x + wordOffset.x * columNumber;
             var positionY = startPosition.y - wordOffset.y * rowNumber;
-            word.GetComponent<RectTransform>().localPosition =new Vector2(positionX, positionY);
+            word.GetComponent<RectTransform>().localPosition = new Vector2(positionX, positionY);
             columNumber++;
         }
     }
@@ -164,7 +164,7 @@ public class SearchingWordsList : MonoBehaviour
         var parentRect = this.GetComponent<RectTransform>();
         var squareSize = new Vector2(0f, 0f);
 
-        squareSize.x = squareRect.rect.width * squareRect.transform.localScale.x + offset;  
+        squareSize.x = squareRect.rect.width * squareRect.transform.localScale.x + offset;
         squareSize.y = squareRect.rect.height * squareRect.transform.localScale.y + offset;
 
         var shiftBy = (parentRect.rect.width - (squareSize.x * _colums)) / 2;

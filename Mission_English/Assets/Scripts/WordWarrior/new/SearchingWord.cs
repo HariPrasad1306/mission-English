@@ -12,7 +12,7 @@ public class SearchingWord : MonoBehaviour
 
     private void Start()
     {
-        
+
     }
 
     private void OnEnable()
@@ -40,3 +40,4 @@ public class SearchingWord : MonoBehaviour
     }
 
 }
+

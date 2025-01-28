@@ -20,6 +20,13 @@ public class AnalogGame : MonoBehaviour
     public Color incorrectAnswerColor = Color.red;
     public Color defaultButtonColor = Color.white;
 
+    [Header("Audio Clips")]
+    public AudioClip correctAnswerClip; // Audio for correct answers
+    public AudioClip incorrectAnswerClip; // Audio for incorrect answers
+    public AudioClip buttonClickClip; // Audio for button clicks
+    public AudioClip endGameClip; // Audio for game completion
+
+    private AudioSource audioSource;
     private List<AnalogyQuestionData.Question3> questions = new List<AnalogyQuestionData.Question3>();
     private int currentQuestionIndex = 0;
     private int score = 0;
@@ -29,13 +36,28 @@ public class AnalogGame : MonoBehaviour
         feedbackText.text = "";
         score = 0;
 
+        // Get the AudioSource component
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
         LoadQuestions();
         DisplayQuestions();
         endGamePanel.SetActive(false); // Hide the end game panel initially
 
         // Add listeners to the buttons
-        retryButton.onClick.AddListener(RetryGame);
-        exitButton.onClick.AddListener(GoToHomePage); // Go to home page instead of exiting
+        retryButton.onClick.AddListener(() =>
+        {
+            PlaySound(buttonClickClip);
+            RetryGame();
+        });
+        exitButton.onClick.AddListener(() =>
+        {
+            PlaySound(buttonClickClip);
+            GoToHomePage();
+        });
     }
 
     private void LoadQuestions()
@@ -62,7 +84,11 @@ public class AnalogGame : MonoBehaviour
 
                     int index = i; // Capture index for the lambda
                     optionButtons[i].onClick.RemoveAllListeners();
-                    optionButtons[i].onClick.AddListener(() => CheckAnswer(index));
+                    optionButtons[i].onClick.AddListener(() =>
+                    {
+                        PlaySound(buttonClickClip);
+                        CheckAnswer(index);
+                    });
                 }
                 else
                 {
@@ -97,15 +123,17 @@ public class AnalogGame : MonoBehaviour
             }
         }
 
-        // Update feedback and score
+        // Update feedback, score, and play audio
         if (selected == current.correctAnswerIndex)
         {
             feedbackText.text = "Correct!!";
             score += 10;
+            PlaySound(correctAnswerClip);
         }
         else
         {
             feedbackText.text = "Wrong!";
+            PlaySound(incorrectAnswerClip);
         }
 
         UpdateScore();
@@ -139,9 +167,21 @@ public class AnalogGame : MonoBehaviour
         TMP_Text endGameText = endGamePanel.GetComponentInChildren<TMP_Text>();
         endGameText.text = $"Game Over!\nYour Score: {score}";
 
+        // Play end game sound
+        PlaySound(endGameClip);
+
         // Hide the retry and exit buttons initially
         retryButton.gameObject.SetActive(true);
         exitButton.gameObject.SetActive(true);
+    }
+
+    // Method to play a sound
+    private void PlaySound(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            audioSource.PlayOneShot(clip);
+        }
     }
 
     // Method to restart the game
@@ -163,3 +203,4 @@ public class AnalogGame : MonoBehaviour
         SceneManager.LoadScene("HomePage");
     }
 }
+

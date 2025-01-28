@@ -26,13 +26,34 @@ public class QuestionManager : MonoBehaviour
     public GameObject gameOverPanel; // Reference to the Game Over panel.
     public TextMeshProUGUI gameOverText; // Reference to the Game Over text.
 
+    [Header("Questions Left Text")]
+    public TextMeshProUGUI questionsLeftText; // Reference to the questions left text.
+
+    [Header("Audio Clips")]
+    public AudioClip correctSound;
+    public AudioClip incorrectSound;
+    public AudioClip buttonClickSound;
+    public AudioClip gameOverSound;
+
+    private AudioSource audioSource;
+
     private int currentSetIndex = 0; // Tracks which set of 4 questions is active.
 
     public int CurrentQuestionIndex => currentSetIndex; // Expose the current question set index as a read-only property
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        UpdateQuestionsLeftText();
         LoadQuestions();
+    }
+
+    public void PlaySound(AudioClip clip)
+    {
+        if (clip != null)
+        {
+            audioSource.PlayOneShot(clip);
+        }
     }
 
     public void LoadQuestions()
@@ -65,11 +86,20 @@ public class QuestionManager : MonoBehaviour
 
             // Disable the next button initially
             nextButton.SetActive(false);
+
+            // Update the questions left text
+            UpdateQuestionsLeftText();
         }
         else
         {
             GameOver(); // Trigger the Game Over when all questions are answered
         }
+    }
+
+    private void UpdateQuestionsLeftText()
+    {
+        int totalSets = questionData.questions.Count;
+        questionsLeftText.text = $"Questions\n{currentSetIndex + 1}/{totalSets}";
     }
 
     public void CheckAllDropZonesFilled()
@@ -91,12 +121,14 @@ public class QuestionManager : MonoBehaviour
 
     public void NextSet()
     {
+        PlaySound(buttonClickSound);
         currentSetIndex++;
         LoadQuestions();
     }
 
     public void GameOver()
     {
+        PlaySound(gameOverSound);
         // Disable the question UI and next button
         foreach (TextMeshProUGUI questionText in questionTexts)
         {

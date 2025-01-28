@@ -136,6 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rectTransform: {fileID: 0}
+  dragStartSound: {fileID: 8300000, guid: e297fe15ec7f0e645a3ab7864a4d43e6, type: 3}
   originalParent: {fileID: 0}
 --- !u!225 &8933886020637289975
 CanvasGroup:

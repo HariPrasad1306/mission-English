@@ -13,9 +13,9 @@ public class WordChecker : MonoBehaviour
     private Ray _rayLeft, _rayRight;
     private Ray _rayDiagonalLeftUp, _rayDiagonalLeftDown;
     private Ray _rayDiagonalRightUp, _rayDiagonalRightDown;
-    private Ray _currentRay =new Ray();
+    private Ray _currentRay = new Ray();
     private Vector3 _rayStartPosition;
-    private List<int> _correctSquareList = new List<int>(); 
+    private List<int> _correctSquareList = new List<int>();
 
 
     private void OnEnable()
@@ -35,10 +35,10 @@ public class WordChecker : MonoBehaviour
         _completedWords = 0;
     }
 
-   
+
     void Update()
     {
-        if(_assignedPoints >0 && Application.isEditor)
+        if (_assignedPoints > 0 && Application.isEditor)
         {
             Debug.DrawRay(_rayUp.origin, _rayUp.direction * 4);
             Debug.DrawRay(_rayDown.origin, _rayDown.direction * 4);
@@ -53,22 +53,22 @@ public class WordChecker : MonoBehaviour
 
     private void SquareSelected(string letter, Vector3 squarePosition, int squareIndex)
     {
-        if(_assignedPoints == 0)
+        if (_assignedPoints == 0)
         {
-            _rayStartPosition= squarePosition;
+            _rayStartPosition = squarePosition;
             _correctSquareList.Add(squareIndex);
             _word += letter;
 
-            _rayUp = new Ray(new Vector2(squarePosition.x,squarePosition.y), new Vector2(0f,1));
-            _rayDown = new Ray(new Vector2(squarePosition.x,squarePosition.y), new Vector2(0f,-1));
-            _rayLeft = new Ray(new Vector2(squarePosition.x,squarePosition.y), new Vector2(-1,0f));
-            _rayRight = new Ray(new Vector2(squarePosition.x,squarePosition.y), new Vector2(1,0f));
-            _rayDiagonalLeftUp = new Ray(new Vector2(squarePosition.x,squarePosition.y), new Vector2(-1,1));
-            _rayDiagonalLeftDown = new Ray(new Vector2(squarePosition.x,squarePosition.y), new Vector2(-1,-1));
-            _rayDiagonalRightUp = new Ray(new Vector2(squarePosition.x,squarePosition.y), new Vector2(1,1));
-            _rayDiagonalRightDown = new Ray(new Vector2(squarePosition.x,squarePosition.y), new Vector2(1,-1));
+            _rayUp = new Ray(new Vector2(squarePosition.x, squarePosition.y), new Vector2(0f, 1));
+            _rayDown = new Ray(new Vector2(squarePosition.x, squarePosition.y), new Vector2(0f, -1));
+            _rayLeft = new Ray(new Vector2(squarePosition.x, squarePosition.y), new Vector2(-1, 0f));
+            _rayRight = new Ray(new Vector2(squarePosition.x, squarePosition.y), new Vector2(1, 0f));
+            _rayDiagonalLeftUp = new Ray(new Vector2(squarePosition.x, squarePosition.y), new Vector2(-1, 1));
+            _rayDiagonalLeftDown = new Ray(new Vector2(squarePosition.x, squarePosition.y), new Vector2(-1, -1));
+            _rayDiagonalRightUp = new Ray(new Vector2(squarePosition.x, squarePosition.y), new Vector2(1, 1));
+            _rayDiagonalRightDown = new Ray(new Vector2(squarePosition.x, squarePosition.y), new Vector2(1, -1));
         }
-        else if (_assignedPoints==1)
+        else if (_assignedPoints == 1)
         {
             _correctSquareList.Add(squareIndex);
             _currentRay = SelectRay(_rayStartPosition, squarePosition);
@@ -99,7 +99,7 @@ public class WordChecker : MonoBehaviour
             {
                 GameEvents.CorrectWordMethod(_word, _correctSquareList);
                 _word = string.Empty;
-                _correctSquareList.Clear(); 
+                _correctSquareList.Clear();
                 return;
             }
 
@@ -112,9 +112,9 @@ public class WordChecker : MonoBehaviour
         var hits = Physics.RaycastAll(currentray, 100.0f);
         for (int i = 0; i < hits.Length; i++)
         {
-            if(hits[i].transform.position == point) 
+            if (hits[i].transform.position == point)
                 return true;
-        
+
         }
         return false;
     }
@@ -124,7 +124,7 @@ public class WordChecker : MonoBehaviour
         var direction = (secondPosition - firstPosition).normalized;
         float tolerance = 0.01f;
 
-        if(Mathf.Abs(direction.x) < tolerance && Mathf.Abs(direction.y -1f) < tolerance)
+        if (Mathf.Abs(direction.x) < tolerance && Mathf.Abs(direction.y - 1f) < tolerance)
         {
             return _rayUp;
         }
@@ -135,17 +135,17 @@ public class WordChecker : MonoBehaviour
 
         }
 
-        if (Mathf.Abs(direction.x- (-1f)) < tolerance && Mathf.Abs(direction.y) < tolerance)
+        if (Mathf.Abs(direction.x - (-1f)) < tolerance && Mathf.Abs(direction.y) < tolerance)
         {
             return _rayLeft;
         }
 
-        if (Mathf.Abs(direction.x -1f) < tolerance && Mathf.Abs(direction.y) < tolerance)
+        if (Mathf.Abs(direction.x - 1f) < tolerance && Mathf.Abs(direction.y) < tolerance)
         {
             return _rayRight;
         }
 
-        if (direction.x < 0f && direction.y >0f)
+        if (direction.x < 0f && direction.y > 0f)
         {
             return _rayDiagonalLeftUp;
         }
@@ -162,7 +162,7 @@ public class WordChecker : MonoBehaviour
 
         if (direction.x > 0f && direction.y <= 0f)
         {
-            return _rayDiagonalRightDown;   
+            return _rayDiagonalRightDown;
         }
 
         return _rayDown;

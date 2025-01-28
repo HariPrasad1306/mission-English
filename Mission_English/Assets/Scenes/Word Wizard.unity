@@ -340,6 +340,7 @@ GameObject:
   - component: {fileID: 788009984}
   - component: {fileID: 788009983}
   - component: {fileID: 788009985}
+  - component: {fileID: 788009986}
   m_Layer: 0
   m_Name: Riddle Manager
   m_TagString: Untagged
@@ -398,7 +399,7 @@ MonoBehaviour:
     answer: Connection
   - question: I'm a light that guides, a beacon in the night, A source of inspiration
       that shines with all its might. What am I?
-    answer: ' Leadership'
+    answer: Leadership
   - question: I'm a bridge that spans, a gap that's wide, A connection that's needed,
       to reach the other side. What am I?
     answer: Communication
@@ -412,6 +413,13 @@ MonoBehaviour:
   wordDisplay: {fileID: 1571231844}
   messageText: {fileID: 1677556294}
   gridParent: {fileID: 4443292864582227488}
+  audioSource: {fileID: 788009986}
+  correctClip: {fileID: 8300000, guid: adbb97b1408f8774ea480b3b4c72d7a0, type: 3}
+  wrongClip: {fileID: 8300000, guid: e0c373a7e82b3034bb8b9578855a586d, type: 3}
+  nextRiddleClip: {fileID: 8300000, guid: f6c280f3153ae2e448476de0db078971, type: 3}
+  failClip: {fileID: 8300000, guid: 19e40cda0f292ac46aebbfce4b4f1d16, type: 3}
+  animator: {fileID: 0}
+  wrongGuessAnimationParameter: WrongGuess
 --- !u!4 &788009984
 Transform:
   m_ObjectHideFlags: 0
@@ -442,6 +450,102 @@ MonoBehaviour:
   letterButtonPrefab: {fileID: 78849273}
   gridParent: {fileID: 4443292864582227488}
   riddleManager: {fileID: 788009983}
+--- !u!82 &788009986
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788009982}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &972286721
 GameObject:
   m_ObjectHideFlags: 0
@@ -747,6 +851,13 @@ MonoBehaviour:
   wordDisplay: {fileID: 0}
   messageText: {fileID: 0}
   gridParent: {fileID: 0}
+  audioSource: {fileID: 0}
+  correctClip: {fileID: 0}
+  wrongClip: {fileID: 0}
+  nextRiddleClip: {fileID: 0}
+  failClip: {fileID: 0}
+  animator: {fileID: 0}
+  wrongGuessAnimationParameter: WrongGuess
 --- !u!4 &1387137399
 Transform:
   m_ObjectHideFlags: 0

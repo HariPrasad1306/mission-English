@@ -5,7 +5,7 @@ using static GameEvents;
 
 public class GridSquare : MonoBehaviour
 {
-   public int SquareIndex {  get; set; }
+    public int SquareIndex { get; set; }
 
     private AlphabetData.LetterData _normalLetterData;
     private AlphabetData.LetterData _selectedLetterData;
@@ -16,7 +16,7 @@ public class GridSquare : MonoBehaviour
     private bool _clicked;
     private int _index = -1;
     private bool _correct;
-    
+
     public void SetIndex(int index)
     {
         _index = index;
@@ -73,24 +73,24 @@ public class GridSquare : MonoBehaviour
         _selected = false;
         _clicked = false;
 
-        if(_correct == true) 
+        if (_correct == true)
             _displayedImage.sprite = _correctLetterData.image;
         else
-            _displayedImage.sprite= _normalLetterData.image;
+            _displayedImage.sprite = _normalLetterData.image;
     }
     private void SelectSquare(Vector3 position)
     {
-        if(this.gameObject.transform.position == position)
+        if (this.gameObject.transform.position == position)
             _displayedImage.sprite = _selectedLetterData.image;
     }
 
-    public void SetSprite ( AlphabetData.LetterData normalLetterData, AlphabetData.LetterData selectedLetterData, AlphabetData.LetterData correctLetterData )
+    public void SetSprite(AlphabetData.LetterData normalLetterData, AlphabetData.LetterData selectedLetterData, AlphabetData.LetterData correctLetterData)
     {
         _normalLetterData = normalLetterData;
         _selectedLetterData = selectedLetterData;
         _correctLetterData = correctLetterData;
 
-        GetComponent<SpriteRenderer>().sprite =_normalLetterData.image;
+        GetComponent<SpriteRenderer>().sprite = _normalLetterData.image;
     }
 
     private void OnMouseDown()
@@ -115,7 +115,7 @@ public class GridSquare : MonoBehaviour
     public void CheckSquare()
     {
         //if(_selected == false && _clicked == true)
-        if(_selected == false && _clicked == true)
+        if (_selected == false && _clicked == true)
         {
             _selected = true;
             GameEvents.CheckSquareMethod(_normalLetterData.letter, gameObject.transform.position, _index);

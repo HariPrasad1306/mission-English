@@ -1567,6 +1567,10 @@ MonoBehaviour:
   correctAnswerColor: {r: 0, g: 1, b: 0, a: 1}
   incorrectAnswerColor: {r: 1, g: 0, b: 0, a: 1}
   defaultButtonColor: {r: 1, g: 0.8957274, b: 0.34528297, a: 1}
+  correctAnswerClip: {fileID: 8300000, guid: adbb97b1408f8774ea480b3b4c72d7a0, type: 3}
+  incorrectAnswerClip: {fileID: 8300000, guid: e0c373a7e82b3034bb8b9578855a586d, type: 3}
+  buttonClickClip: {fileID: 8300000, guid: f6c280f3153ae2e448476de0db078971, type: 3}
+  endGameClip: {fileID: 8300000, guid: 19e40cda0f292ac46aebbfce4b4f1d16, type: 3}
 --- !u!4 &1028109045
 Transform:
   m_ObjectHideFlags: 0

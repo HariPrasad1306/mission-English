@@ -7,6 +7,8 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public RectTransform rectTransform;
     private Vector2 originalPosition;
     private bool isLocked = false;
+    public AudioClip dragStartSound;
+
 
     public Transform originalParent; // Reference to the original parent (answer panel).
 
@@ -21,6 +23,9 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         if (isLocked) return;
 
+        var questionManager = FindObjectOfType<QuestionManager>();
+        questionManager.PlaySound(dragStartSound);
+
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = false;
     }
@@ -29,8 +34,17 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         if (isLocked) return;
 
-        rectTransform.anchoredPosition += eventData.delta;
+        Vector2 localPoint;
+        if (RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            rectTransform.parent as RectTransform,
+            eventData.position,
+            eventData.pressEventCamera,
+            out localPoint))
+        {
+            rectTransform.localPosition = localPoint;
+        }
     }
+
 
     public void OnEndDrag(PointerEventData eventData)
     {

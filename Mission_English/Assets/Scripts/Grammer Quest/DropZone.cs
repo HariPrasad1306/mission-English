@@ -46,7 +46,7 @@ public class DropZone : MonoBehaviour, IDropHandler
                             draggedItem.rectTransform.localPosition = Vector3.zero; // Center the item.
 
                             isFilled = true; // Mark the drop zone as filled
-
+                            questionManager.PlaySound(questionManager.correctSound);
                             // Notify the QuestionManager that this drop zone has been filled
                             questionManager.CheckAllDropZonesFilled();
                         }
@@ -58,6 +58,7 @@ public class DropZone : MonoBehaviour, IDropHandler
                             // Reset the item position and put it back in the original layout group
                             draggedItem.ResetItem();
                             isFilled = false; // Reset the drop zone to not filled
+                            questionManager.PlaySound(questionManager.incorrectSound);
                         }
                     }
                     else
@@ -83,4 +84,5 @@ public class DropZone : MonoBehaviour, IDropHandler
 
         isFilled = false; // Reset the filled state
     }
+
 }

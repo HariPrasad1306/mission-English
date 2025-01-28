@@ -11,7 +11,7 @@ public class WordsGrid : MonoBehaviour
 
     public float squareOffset = 0.0f;
     public float topPosition;
-    [SerializeField]private float xOffsetv = 0.0f;
+    [SerializeField] private float xOffsetv = 0.0f;
     [SerializeField] private float yOffsetv = 0.0f;
 
     private List<GameObject> _squareList = new List<GameObject>();
@@ -50,8 +50,8 @@ public class WordsGrid : MonoBehaviour
                 rowNumber = 0;
             }
 
-            var positionX = startPosition.x + offset.x*columNumber;
-            var positionY = startPosition.y + offset.y* rowNumber;
+            var positionX = startPosition.x + offset.x * columNumber;
+            var positionY = startPosition.y + offset.y * rowNumber;
 
             square.GetComponent<Transform>().position = new Vector2(positionX, positionY);
             rowNumber++;
@@ -135,26 +135,26 @@ public class WordsGrid : MonoBehaviour
                     var normalLetterData = alphabetData.AlphabetNormal.Find(data => data.letter == squareLetter);
                     var SelectedLetterData = alphabetData.AlphabetHighlighted.Find(data => data.letter == squareLetter);
                     var correctLetterData = alphabetData.AlphabetWrong.Find(data => data.letter == squareLetter);
-                    
-                    if (normalLetterData.image == null || correctLetterData.image == null)
-                    { 
-                        Debug.LogError("All fields in your Array should have some letters. press Fill up with Random Button in your board data to add random letter.Letter" + squareLetter);
-                    
-                        #if UNITY_EDITOR
 
-                        if(UnityEditor.EditorApplication.isPlaying)
+                    if (normalLetterData.image == null || correctLetterData.image == null)
+                    {
+                        Debug.LogError("All fields in your Array should have some letters. press Fill up with Random Button in your board data to add random letter.Letter" + squareLetter);
+
+#if UNITY_EDITOR
+
+                        if (UnityEditor.EditorApplication.isPlaying)
                         {
                             UnityEditor.EditorApplication.isPlaying = false;
                         }
-                        #endif
+#endif
                     }
                     else
                     {
                         _squareList.Add(Instantiate(gridSquarePrefab));
                         _squareList[_squareList.Count - 1].GetComponent<GridSquare>().SetSprite(normalLetterData, correctLetterData, SelectedLetterData);
                         _squareList[_squareList.Count - 1].transform.SetParent(this.transform);
-                        _squareList[_squareList.Count -1].GetComponent<Transform>().position = new Vector3(0f, 0f, 0f);
-                        _squareList[_squareList.Count -1].transform.localScale = squareScale;
+                        _squareList[_squareList.Count - 1].GetComponent<Transform>().position = new Vector3(0f, 0f, 0f);
+                        _squareList[_squareList.Count - 1].transform.localScale = squareScale;
                         _squareList[_squareList.Count - 1].GetComponent<GridSquare>().SetIndex(_squareList.Count - 1);
                     }
                 }
@@ -215,16 +215,16 @@ public class WordsGrid : MonoBehaviour
         var squareSize = new Vector2(0f, 0f);
         var startPosition = new Vector2(0f, 0f);
 
-        squareSize.x = (squareRect.width* targetScale.x)+squareOffset;
-        squareSize.y = (squareRect.height* targetScale.y)+squareOffset;
+        squareSize.x = (squareRect.width * targetScale.x) + squareOffset;
+        squareSize.y = (squareRect.height * targetScale.y) + squareOffset;
 
         var midWidthPosition = ((currentGameData.selectedBoardData.Colums * squareSize.x) / 2) * 0.01f;
         var midWidthHeight = ((currentGameData.selectedBoardData.Rows * squareSize.y) / 2) * 0.01f;
 
-        startPosition.x = (midWidthPosition != 0) ? midWidthPosition* -1: midWidthPosition;
+        startPosition.x = (midWidthPosition != 0) ? midWidthPosition * -1 : midWidthPosition;
         startPosition.y = midWidthHeight;
 
-        return startPosition.x > GetHalfScreenWidth() * -1 || startPosition.y >topPosition;
+        return startPosition.x > GetHalfScreenWidth() * -1 || startPosition.y > topPosition;
 
     }
 

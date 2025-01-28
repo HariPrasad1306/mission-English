@@ -825,8 +825,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 439}
-  m_SizeDelta: {x: 328.87, y: 50}
+  m_AnchoredPosition: {x: 0, y: 478}
+  m_SizeDelta: {x: 369.77, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &666256108
 MonoBehaviour:
@@ -848,7 +848,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: QestionS
+  m_text: Questions
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 52488a7ab5121d64ba07aa5b578ad443, type: 2}
   m_sharedMaterial: {fileID: -2633017158059731177, guid: 52488a7ab5121d64ba07aa5b578ad443, type: 2}
@@ -1567,6 +1567,10 @@ MonoBehaviour:
   correctAnswerColor: {r: 0, g: 1, b: 0, a: 1}
   incorrectAnswerColor: {r: 1, g: 0, b: 0, a: 1}
   defaultButtonColor: {r: 1, g: 0.8957274, b: 0.34528297, a: 1}
+  correctAnswerClip: {fileID: 8300000, guid: adbb97b1408f8774ea480b3b4c72d7a0, type: 3}
+  incorrectAnswerClip: {fileID: 8300000, guid: e0c373a7e82b3034bb8b9578855a586d, type: 3}
+  buttonClickClip: {fileID: 8300000, guid: f6c280f3153ae2e448476de0db078971, type: 3}
+  endGameClip: {fileID: 8300000, guid: 19e40cda0f292ac46aebbfce4b4f1d16, type: 3}
 --- !u!4 &1028109045
 Transform:
   m_ObjectHideFlags: 0
